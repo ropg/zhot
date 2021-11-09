@@ -1,0 +1,32 @@
+{
+  "name": "zhot",
+  "version": "1.0.0",
+  "description": "Headless browser screenshots. Easy shell around puppeteer, use from node or use command-line tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ropg/zhot.git"
+  },
+  "keywords": [
+    "browser",
+    "screenshot",
+    "puppeteer",
+    "cli"
+  ],
+  "bin": "./cli.js",
+  "author": "Rop Gonggrijp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ropg/zhot/issues"
+  },
+  "homepage": "https://github.com/ropg/zhot#readme",
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "prompt-sync": "^4.1.6",
+    "puppeteer": "^11.0.0",
+    "yargs": "^17.2.1"
+  }
+}
