@@ -83,6 +83,11 @@ const config = require('yargs/yargs')(process.argv.slice(2))
             describe: 'Show browser console and detailed error info',
             type: 'boolean'
         },
+        'H': {
+            alias: 'head',
+            describe: 'disable headless mode',
+            type: 'boolean'
+        },
         'o': {
             alias: 'outputFile',
             default: 'screenshot.png',
@@ -109,6 +114,7 @@ if (config.writeCookies) {
 
     if (config.debug) config.consoleFunction = console.log;
     if (!config.quiet) config.statusFunction = console.log ;
+    if (config.head) config.headless = false;
 
     zhot(config)
         .then((res) => {

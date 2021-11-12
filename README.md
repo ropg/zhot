@@ -105,6 +105,7 @@ Options:
   -c, --readCookies   Load cookies from file                            [string]
   -q, --quiet         Supress status updates                           [boolean]
   -d, --debug         Show browser console and detailed error info     [boolean]
+  -H, --head          disable headless mode                            [boolean]
   -o, --outputFile    Filename for screenshot. Formats: png, jpg or webp,
                       selected by extension.[string] [default: "screenshot.png"]
 ```
