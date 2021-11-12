@@ -8,7 +8,7 @@
 
 ### Introduction
 
-This module provides an easy shell around **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, a powerful automation tool that allows remote control of a browser, with or without displaying anything on the screen. **zhot** can be used to make screenshots from your own node.js javascript code, or by using a simple command line utility. Because it's using a real browser, pages built on the fly by javascript can be screenshotted.
+This module provides an easy shell around **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, a powerful automation tool that allows remote control of a browser. **zhot** can be used to make screenshots from your own node.js javascript code, or by using a simple command line utility. Because it's using a real browser, pages built on the fly by javascript can be screenshotted.
 
 * **zhot** can also capture a single element on the rendered page, and can execute arbitrary javascript in the context of the page before the image is taken.
 
@@ -185,7 +185,7 @@ zhot(config)
 
 ### Installation Details
 
-**zhot** depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Google Chrome binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. Bit it will only do this for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems during installation, try this:
+**zhot** depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Chromium binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. But it will only do this for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems during installation, try this:
 
 ```text
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true

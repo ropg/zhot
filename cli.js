@@ -2,10 +2,9 @@
 
 "use strict";
 
-const { exit } = require('yargs');
 var zhot = require('./index');
 
-const config = require('yargs/yargs')(process.argv.slice(2))
+const config = require('yargs')(process.argv.slice(2))
     .usage('$0 <url>', '', (yargs) => {
         yargs
         .positional('url', {
@@ -113,7 +112,7 @@ if (config.writeCookies) {
     }
 
     if (config.debug) config.consoleFunction = console.log;
-    if (!config.quiet) config.statusFunction = console.log ;
+    if (!config.quiet) config.statusFunction = console.log;
     if (config.head) config.headless = false;
 
     zhot(config)
@@ -125,7 +124,7 @@ if (config.writeCookies) {
                 throw (e);
             } else {
                 if (!config.quiet) console.log(`Error: ${e.message}`);
-                exit(1);
+                process.exit(1);
             }
         })
     ;
