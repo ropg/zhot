@@ -41,37 +41,49 @@ async function async_zhot(config) {
     });
 
     // Run any supplied javascript
-    if (config.evaluate) returnValue = await page.evaluate(config.evaluate);
+    if (config.evaluate) {
+        // Deep copy, otherwise nested object loop
+        var args = [ JSON.parse(JSON.stringify(config)) ];
+        if (config.evaluateArgs) {
+            args = args.concat(config.evaluateArgs);
+        }
+        returnValue = await page.evaluate(config.evaluate, ...args);
+    }
+    
+    // Evaluated javascript has a way to cancel further operations
+    if (!returnValue.cancelScreenshot) {
 
-    // Remove and render invisible selected elements
-    if (config.remove) {
-        var removed = await page.$$eval(config.remove, (nodes) => {
-            nodes.forEach((node) => node.remove());
-            return nodes.length;
-        });
-        status(`Removed ${removed} element(s).`);
-    }
-    if (config.invisible) {
-        var hidden = await page.$$eval(config.invisible, (nodes) => {
-            nodes.forEach((node) => node.style.display = "none");
-            return nodes.length;
-        });
-        status(`Hidden ${hidden} element(s).`);
-    }
+        // Remove and render invisible selected elements
+        if (config.remove) {
+            var removed = await page.$$eval(config.remove, (nodes) => {
+                nodes.forEach((node) => node.remove());
+                return nodes.length;
+            });
+            status(`Removed ${removed} element(s).`);
+        }
+        if (config.invisible) {
+            var hidden = await page.$$eval(config.invisible, (nodes) => {
+                nodes.forEach((node) => node.style.display = "none");
+                return nodes.length;
+            });
+            status(`Hidden ${hidden} element(s).`);
+        }
 
-    // Optionally give browser some time to settle
-    if (config.settleTime) {
-        await new Promise(r => setTimeout(r, config.settleTime));
-    }
+        // Optionally give browser some time to settle
+        if (config.settleTime) {
+            await new Promise(r => setTimeout(r, config.settleTime));
+        }
 
-    // Take the actual screenshot
-    var pictureThis = page;
-    if (config.selector && config.selector != 'whole page') {
-        await page.waitForSelector(config.selector);
-        pictureThis = await page.$(config.selector);
+        // Take the actual screenshot
+        var pictureThis = page;
+        if (config.selector && config.selector != 'whole page') {
+            await page.waitForSelector(config.selector);
+            pictureThis = await page.$(config.selector);
+        }
+        await pictureThis.screenshot({ path: config.outputFile });
+        status(`Screenshot saved to '${config.outputFile}'.`);
+    
     }
-    await pictureThis.screenshot({ path: config.outputFile });
-    status(`Screenshot saved to '${config.outputFile}'.`);
 
     // Done
     await browser.close();

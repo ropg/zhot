@@ -160,8 +160,9 @@ zhot(config)
     - `isMobile` (boolean) Whether the `meta viewport` tag is taken into account. Defaults to `false`.
     - `hasTouch` (boolean) Specifies if viewport supports touch events. Defaults to `false`.
     - `isLandscape` (boolean) Specifies if viewport is in landscape mode. Defaults to `false`.
-  - `evaluate` (string *or* function) This is javascript (either a string that is `eval`'d or a function to be called) that will be executed by the browser in the context of the page before the screenshot is taken. Any return value is returned when zhot's promise resolves.
-  - `executablePath` (string) Path to a browser executable to run instead of the bundled Chromium. You're probably better off setting the environment variables if you need to specify this, see 'Installation Details' chapter below.
+  - `evaluate` (string *or* function) This is javascript (either a string that is `eval`'d or a function to be called) that will be executed by the browser in the context of the page before the screenshot is taken. The config object is always passed as the first argument to this function. Any return value will in turn be returned when zhot's promise resolves.
+  - `evaluateArgs` (array) Optional array with additional arguments to the function provided with `evaluate`.
+  - `executablePath` (string) Path to a browser executable to run instead of the bundled Chromium. You're probably better off setting the environment variables if you need to specify this, see [Installation Details](#installation-details) chapter below.
   - `headless` (boolean) Whether to run browser in headless mode.
   - `invisible` (string) Any elements matching this selector are hidden.
   - `settleTime` (number) Give browser this many milliseconds to settle before screenshot.
@@ -176,7 +177,7 @@ zhot(config)
 
 **return value**
 
-`zhot` returns a promise that resolves to the return value of what you passed as `config.evaluate`, or `true` if you didn't pass anything.
+`zhot` returns a promise that resolves to the return value of what you passed as `config.evaluate`, or `true` if you didn't pass anything. If what you evaluate returns an object with a property named `cancelScreenshot`, all subsequent operations are cancelled and the promise resolves with the returned object. 
 
 
 
@@ -240,7 +241,7 @@ Screenshot saved to 'screenshot.png'.
 Better, but still a lot of space is taken up by the ad banner and header at the top. Using Chrome's DevTools, I find out that they are both inside a `<div id="bannerandheader">`, which we can simply remove:
 
 ```text
-zhot -w 1024 -h 768 -c guardiancookies -r '#bannerandheader' https://guardian.co.uk && open screenshot.png
+$ zhot -w 1024 -h 768 -c guardiancookies -r '#bannerandheader' https://guardian.co.uk && open screenshot.png
 Cookies loaded from 'guardiancookies'.
 Removed 1 element(s).
 Screenshot saved to 'screenshot.png'.
@@ -252,4 +253,4 @@ There! That's a nice screenshot!
 
 &nbsp;
 
-*(I use `writeCookies` on my Mac to create a cookie file and then create screenshots using these cookies on a server that has no display.)*
+(I use `zhot -b` on my Mac to create cookie files and then create screenshots using these cookies on a server that has no display.)
