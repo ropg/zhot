@@ -8,4 +8,4 @@
 
 - `config.evaluate` now gets `config` object as argument, more arguments can be passed with `config.evaluateArgs`.
 - `-H` / `--head` turns off headless mode for CLI tool.
-- If `config.evaluate` returns object with `cancelScreenshot` property, everything past that is cancalled and `config.evaluate`'s return value is returned from zhot.
+- If `config.evaluate` returns object with `cancelScreenshot` property, everything past that is cancelled and `config.evaluate`'s return value is returned from zhot.
