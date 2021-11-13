@@ -257,3 +257,11 @@ There! That's a nice screenshot!
 &nbsp;
 
 (I use `zhot -b` on my Mac to create cookie files and then create screenshots using these cookies on a server that has no display.)
+
+
+
+&nbsp;
+
+### Screenshots of tweets
+
+Getting a screenshot of a single tweet can be tricky, esp. if that tweet is a reply to another. Fortunately, I also wrote **[tweetzhot](https://github.com/ropg/tweetzhot)**, which uses zhot underneath but presents its own easy-to-use interface. Check it out...
