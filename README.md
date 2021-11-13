@@ -163,6 +163,7 @@ zhot(config)
   - `evaluate` (string *or* function) This is javascript (either a string that is `eval`'d or a function to be called) that will be executed by the browser in the context of the page before the screenshot is taken. The config object is always passed as the first argument to this function. Any return value will in turn be returned when zhot's promise resolves.
   - `evaluateArgs` (array) Optional array with additional arguments to the function provided with `evaluate`.
   - `executablePath` (string) Path to a browser executable to run instead of the bundled Chromium. You're probably better off setting the environment variables if you need to specify this, see [Installation Details](#installation-details) chapter below.
+  - `extraHTTPHeaders` (object) Additional HTTP headers for puppeteer to send.
   - `headless` (boolean) Whether to run browser in headless mode.
   - `invisible` (string) Any elements matching this selector are hidden.
   - `settleTime` (number) Give browser this many milliseconds to settle before screenshot.
@@ -185,7 +186,7 @@ zhot(config)
 
 ### Installation Details
 
-**zhot** depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Chromium binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. But it will only do this for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems during installation, try this:
+**zhot** depends on **[puppeteer](https://github.com/puppeteer/puppeteer/blob/main/README.md)**, which in turn installs a Chromium binary that is know to work with it. But many recent versions of Chrome and (experimental support) Firefox will apparently work with it. But it will only install Chromium for supported operating systems, and FreeBSD (which I use for my server) was not supported. If you run into problems with puppeteer during installation, you might want to try something like this:
 
 ```text
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true

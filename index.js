@@ -30,6 +30,10 @@ async function async_zhot(config) {
         status(`Cookies loaded from '${config.readCookies}'.`);
     }
 
+    if (config.extraHTTPHeaders) {
+        await page.setExtraHTTPHeaders(config.extraHTTPHeaders);
+    }
+    
     // Go to page and wait for it
     await page.goto(config.url);
     await page.waitForNetworkIdle();
