@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/zhot.svg)](https://badge.fury.io/js/zhot)
+
 # zhot
 
 **Web screenshots made super-easy**
