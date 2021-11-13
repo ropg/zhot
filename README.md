@@ -154,6 +154,7 @@ zhot(config)
 
 (`url` and `outputFile` are mandatory elements.)
 
+  - `args` (array) Optional arguments for the browser executable.
   - `consoleFunction` (function) Receives the browser console messages as strings. Set to `console.log` to get these to stdout.
   - `defaultViewport` (Object)
     - `width` (number) Window width, defaults to 800 pixels.
