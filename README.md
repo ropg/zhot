@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/zhot.svg)](https://www.npmjs.com/package/zhot) [![license](https://badgen.net/github/license/sequelize/sequelize)](https://github.com/sequelize/sequelize/blob/main/LICENSE) [![github](https://img.shields.io/github/last-commit/ropg/zhot)](https://github.com/ropg/zhot)
+[![npm version](https://badge.fury.io/js/zhot.svg)](https://www.npmjs.com/package/zhot) [![license](https://badgen.net/github/license/ropg/zhot)](https://github.com/ropg/zhot/blob/main/LICENSE) [![github](https://img.shields.io/github/last-commit/ropg/zhot)](https://github.com/ropg/zhot)
 
 # zhot
 
