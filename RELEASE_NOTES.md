@@ -13,3 +13,7 @@
 ### 1.2.0
 
 - Added `extraHTTPHeaders` as property to `config` object.
+
+### 1.2.1
+
+- In `-b` / `--writeCookies`, the viewport size now tracks the window size.

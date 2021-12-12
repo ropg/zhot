@@ -137,6 +137,7 @@ async function browseForCookies(config) {
     const jsonfile = require('jsonfile');
     const puppeteer = require('puppeteer');
     config.headless = false;
+    config.defaultViewport = null;
     var browser = await puppeteer.launch(config);
 
     const page = await browser.newPage();

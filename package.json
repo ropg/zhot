@@ -1,6 +1,6 @@
 {
   "name": "zhot",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Web screenshots made super-easy",
   "main": "index.js",
   "scripts": {
